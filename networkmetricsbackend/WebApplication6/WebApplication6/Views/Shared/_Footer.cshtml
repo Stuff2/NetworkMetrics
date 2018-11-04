@@ -1,0 +1,136 @@
+﻿<!-- Jquery Core Js -->
+<script src="~/Content/plugins/jquery/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core Js -->
+<script src="~/Content/plugins/bootstrap/js/bootstrap.js"></script>
+<!-- Select Plugin Js -->
+<script src="~/Content/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+<!-- Slimscroll Plugin Js -->
+<script src="~/Content/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="~/Content/plugins/node-waves/waves.js"></script>
+<!-- Jquery CountTo Plugin Js -->
+<script src="~/Content/plugins/jquery-countto/jquery.countTo.js"></script>
+<!-- Morris Plugin Js -->
+<script src="~/Content/plugins/raphael/raphael.min.js"></script>
+<script src="~/Content/plugins/morrisjs/morris.js"></script>
+<!-- ChartJs -->
+<script src="~/Content/plugins/chartjs/Chart.bundle.js"></script>
+<!-- Flot Charts Plugin Js -->
+<script src="~/Content/plugins/flot-charts/jquery.flot.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.resize.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.pie.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.categories.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.time.js"></script>
+<!-- Sparkline Chart Plugin Js -->
+<script src="~/Content/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+<!-- Custom Js -->
+<script src="~/Content/js/admin.js"></script>
+<script src="~/Content/js/pages/index.js"></script>
+
+<!-- Demo Js -->
+<script src="~/Content/js/demo.js"></script>
+<script src="~/Content/js/pages/ui/modals.js"></script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
+<script src="~/Content/js/pages/charts/chartjs.js"></script>
+
+
+@*<script type="text/javascript">
+
+
+
+
+    var Markers = {
+        fn: {
+            addMarkers: function () {
+                var target = $('#image-wrapper');
+                var data = target.attr('data-captions');
+                var captions = $.parseJSON(data);
+                var coords = captions.coords;
+
+                for (var i = 0; i < coords.length; i++) {
+                    var obj = coords[i];
+                    var top = obj.top;
+                    var left = obj.left;
+                    var text = obj.text;
+
+                    $('<span class="marker"/>').css({
+                        top: top,
+                        left: left
+                    }).html('<span class="caption">' + text + '</span>').
+                        appendTo(target);
+
+                }
+            },
+            showCaptions: function () {
+                $('span.marker').on('click', function () {
+                    var $marker = $(this),
+                        $caption = $('span.caption', $marker);
+                    if ($caption.is(':hidden')) {
+                        $caption.slideDown(300);
+
+                    } else {
+                        $caption.slideUp(300);
+
+                    }
+
+                });
+
+            }
+        },
+
+        init: function () {
+            this.fn.addMarkers();
+            this.fn.showCaptions();
+
+        }
+    };
+
+    $(function () {
+        Markers.init();
+
+    });
+
+
+</script>*@
+
+<style>
+    #image-wrapper {
+        position: relative;
+        background: #fff;
+    }
+
+        #image-wrapper img {
+            display: block;
+        }
+
+    span.marker {
+        width: 20px;
+        height: 20px;
+        color: #fff;
+        text-align: center;
+        position: absolute;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+        span.marker:before {
+            content: url(https://resmim.net/f/Q44lEx.gif);
+        }
+
+    span.caption {
+        width: 180px;
+        border-radius: 25px;
+        background: #d92830;
+        color: #fff;
+        padding: 4px;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        display: none;
+    }
+</style>

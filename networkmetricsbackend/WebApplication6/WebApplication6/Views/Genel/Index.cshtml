@@ -1,0 +1,322 @@
+﻿@using WebApplication6.Models;
+@using System.Linq
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Jquery Core Js -->
+<!-- Bootstrap Core Js -->
+<!-- Select Plugin Js -->
+<!-- Slimscroll Plugin Js -->
+<script src="~/Content/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="~/Content/plugins/node-waves/waves.js"></script>
+<!-- Jquery CountTo Plugin Js -->
+<script src="~/Content/plugins/jquery-countto/jquery.countTo.js"></script>
+<!-- Morris Plugin Js -->
+<script src="~/Content/plugins/raphael/raphael.min.js"></script>
+<script src="~/Content/plugins/morrisjs/morris.js"></script>
+<!-- ChartJs -->
+<script src="~/Content/plugins/chartjs/Chart.bundle.js"></script>
+<!-- Flot Charts Plugin Js -->
+<script src="~/Content/plugins/flot-charts/jquery.flot.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.resize.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.pie.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.categories.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.time.js"></script>
+<!-- Sparkline Chart Plugin Js -->
+<script src="~/Content/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+<!-- Custom Js -->
+<script src="~/Content/js/admin.js"></script>
+<script src="~/Content/js/pages/index.js"></script>
+<script src="~/Content/js/pages/charts/chartjs.js"></script>
+
+<!-- Demo Js -->
+<script src="~/Content/js/demo.js"></script>
+<script src="~/Content/js/pages/ui/modals.js"></script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
+@{
+    var degerler = (string)ViewBag.istatistik;
+    var chartCizs = (string)ViewBag.chartCiz;
+    chartCizs = chartCizs.TrimEnd('&');
+
+    var dizi = degerler.Split(',');
+}
+
+
+
+
+<section style="margin-top:50px" class="content">
+    <div>
+
+        <input id="genelchart"  hidden value="@chartCizs"/>
+
+        <div class="row clearfix">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-blue hover-expand-effect">
+                    <div class="icon">
+                        <i style="font-size:55px; padding-top:25px" class="fas fa-desktop"></i>
+                    </div>
+                    <div class="content">
+                        <div class="text">TOTAL BİLGİSAYAR</div>
+                        <div class="number count-to" data-from="0" data-to="@dizi[0]" data-speed="1000" data-fresh-interval="20"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-cyan hover-expand-effect">
+                    <div class="icon">
+                        <i style="font-size:55px; padding-top:25px" class="fas fa-rocket"></i>
+                    </div>
+                    <div class="content">
+                        <div class="text">TOTAL RAM</div>
+                        <div class="number count-to" data-from="0" data-to="@dizi[3]" data-speed="1000" data-fresh-interval="50"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-pink hover-expand-effect">
+                    <div class="icon">
+                        <i style="font-size:55px; padding-top:25px" class="fas fa-hdd"></i>
+                    </div>
+                    <div class="content">
+                        <div class="text">TOTAL HDD</div>
+                        <div class="number count-to" data-from="0" data-to="@dizi[2]" data-speed="1000" data-fresh-interval="20"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="info-box bg-red hover-expand-effect">
+                    <div class="icon">
+                        <i style="font-size:55px; padding-top:25px" class="fas fa-list-alt"></i>
+                    </div>
+                    <div class="content">
+                        <div class="text">TOTAL PROGRAM</div>
+                        <div class="number count-to" data-from="0" data-to="@dizi[1]" data-speed="1000" data-fresh-interval="20"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row clearfix">
+            <!-- Line Chart -->
+            @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>TAKİPÇİ DEĞİŞİMİ TWITTER/FACEBOOK/INSTAGRAM</h2>
+                        </div>
+                        <div class="body">
+                            <canvas id="line_chart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>*@
+            <!-- #END# Line Chart -->
+            <!-- Bar Chart -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>Bilgisayarlar - Genel Durum</h2>
+                    </div>
+                    <div class="body">
+                        <canvas id="bar_chart" height="150"></canvas>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Bar Chart -->
+        </div>
+
+
+
+        @*<div class="row clearfix">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                        <div class="card bg-cyan">
+                            <div class="header">
+                                <h2 style="color:#fff"><i class="fab fa-twitter"></i>  Twitter</h2>
+                            </div>
+                        </div>
+
+                        <div style="height:400px" class="row clearfix">
+                            <!-- Task Info -->
+                            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                <div class="card">
+                                    <div class="header">
+                                        <h2>İSTASYON BAZLI OLUSMSUZ GÖRÜŞLER (İLK 5)</h2>
+                                    </div>
+                                    <div class="body">
+                                        <div class="table-responsive">
+                                            <table class="table table-hover dashboard-task-infos">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>İstasyon Adı</th>
+                                                        <th>Durum</th>
+                                                        <th>Tweet Sayısı</th>
+                                                        <th>Oran</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>Yenikapı</td>
+                                                        <td><span class="label bg-green">Rapor Gönderildi</span></td>
+                                                        <td>John Doe</td>
+                                                        <td>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-green" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td>Ünalan</td>
+                                                        <td><span class="label bg-green">Rapor Gönderildi</span></td>
+                                                        <td>John Doe</td>
+                                                        <td>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>3</td>
+                                                        <td>Ayrılıkçeşmesi</td>
+                                                        <td><span class="label bg-green">Rapor Gönderildi</span></td>
+                                                        <td>John Doe</td>
+                                                        <td>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-light-blue" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>4</td>
+                                                        <td>Fikirtepe</td>
+                                                        <td>
+                                                            <span class="label bg-red">İncelenmedi</span>
+                                                        </td>
+                                                        <td>John Doe</td>
+                                                        <td>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>5</td>
+                                                        <td>Mecidiyeköy</td>
+                                                        <td>
+                                                            <span class="label bg-red">İncelenmedi</span>
+                                                        </td>
+                                                        <td>John Doe</td>
+                                                        <td>
+                                                            <div class="progress">
+                                                                <div class="progress-bar bg-red" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%"></div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- #END# Task Info -->
+                            <!-- Browser Usage -->
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div style=" height:360px" class="card">
+                                    <div class="header">
+                                        <h2>GENEL</h2>
+                                    </div>
+                                    <div class="body">
+                                        <canvas id="pie_chart" height="200"></canvas>
+                                    </div>
+                                    <div style="text-align:center;">
+                                        <button type="button" class="btn bg-green waves-effect">Fikirtepe 25 </button>
+                                        <button type="button" class="btn bg-light-blue waves-effect">Ayrılıkçeşmesi 30</button>
+                                        <button type="button" class="btn bg-orange waves-effect">Ünalan 30</button>
+                                        <button type="button" class="btn bg-pink waves-effect">Yenikapı 55</button>
+                                        <button type="button" class="btn bg-red waves-effect">Mecidiyeköy 55</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- #END# Browser Usage -->
+                        </div>
+
+
+                        <div class="row clearfix">
+
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div style="height:425px" class="card">
+                                    <div class="header">
+                                        <h2>GÖNDERİ TİPİ-ETKİLEŞİM</h2>
+                                    </div>
+                                    <div style="text-align:center" class="body">
+                                        <div id="donut_chart" class="dashboard-donut-chart"></div>
+                                        <button type="button" class="btn bg-orange waves-effect"><i class="material-icons">insert_photo</i>450</button>
+                                        <button type="button" class="btn bg-teal waves-effect"><i class="material-icons">videocam</i>300</button>
+                                        <button type="button" class="btn bg-pink waves-effect"><i class="material-icons">text_format</i>102</button>
+                                        <button type="button" class="btn bg-blue waves-effect"><i class="material-icons">link</i>12</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div style="height:425px" class="card">
+                                    <div class="header">
+                                        <h2>ETKİLEŞİM ORANLARI</h2>
+                                    </div>
+                                    <div style="text-align:center" class="body">
+                                        <div id="donut_chart_2" class="dashboard-donut-chart"></div>
+                                        <button type="button" class="btn bg-orange waves-effect">RT 450</button>
+                                        <button type="button" class="btn bg-pink waves-effect">LIKE 102</button>
+                                        <button type="button" class="btn bg-blue waves-effect">MENTION 12</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div style="height:425px" class="card">
+                                    <div class="header">
+                                        <h2>OLUMLU/OLUMSUZ</h2>
+                                    </div>
+                                    <div class="body">
+                                        <div id="real_time_chart" class="dashboard-flot-chart"></div>
+                                    </div>
+                                    <p style="text-align:center">Dolgu alanı olumsuz konuşulma oranlarıdır.</p>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                </div>
+
+
+
+            </div>*@
+    </div>
+</section>
+
+
+
+<script type="text/javascript">
+
+
+    var oku = document.getElementById("genelchart").value;
+
+    new Chart(document.getElementById("bar_chart").getContext("2d"), getChartJs('bar', oku));
+
+    //new Chart(document.getElementById("line_chart").getContext("2d"), getChartJs('line'));
+    //new Chart(document.getElementById("pie_chart").getContext("2d"), getChartJs('pie'));
+    //new Chart(document.getElementById("radar_chart").getContext("2d"), getChartJs('radar'));
+
+</script>
+
+
+

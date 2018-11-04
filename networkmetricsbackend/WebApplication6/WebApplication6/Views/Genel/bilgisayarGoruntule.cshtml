@@ -1,0 +1,218 @@
+﻿@using WebApplication6.Models;
+@using System.Linq
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Jquery Core Js -->
+<!-- Bootstrap Core Js -->
+<!-- Select Plugin Js -->
+<!-- Slimscroll Plugin Js -->
+<script src="~/Content/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="~/Content/plugins/node-waves/waves.js"></script>
+<!-- Jquery CountTo Plugin Js -->
+<script src="~/Content/plugins/jquery-countto/jquery.countTo.js"></script>
+<!-- Morris Plugin Js -->
+<script src="~/Content/plugins/raphael/raphael.min.js"></script>
+<script src="~/Content/plugins/morrisjs/morris.js"></script>
+<!-- ChartJs -->
+<script src="~/Content/plugins/chartjs/Chart.bundle.js"></script>
+<!-- Flot Charts Plugin Js -->
+<script src="~/Content/plugins/flot-charts/jquery.flot.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.resize.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.pie.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.categories.js"></script>
+<script src="~/Content/plugins/flot-charts/jquery.flot.time.js"></script>
+<!-- Sparkline Chart Plugin Js -->
+<script src="~/Content/plugins/jquery-sparkline/jquery.sparkline.js"></script>
+<!-- Custom Js -->
+<script src="~/Content/js/admin.js"></script>
+<script src="~/Content/js/pages/index.js"></script>
+<script src="~/Content/js/pages/charts/chartjs.js"></script>
+
+<!-- Demo Js -->
+<script src="~/Content/js/demo.js"></script>
+<script src="~/Content/js/pages/ui/modals.js"></script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+
+@{
+
+	var degerlerx = (string)ViewBag.verileriCiz;
+	var degerlerxx = (string)ViewBag.toplamStringGonder;
+
+	var tablolar = degerlerx.Split('&');
+	var bilgisayarID = tablolar[0];
+	var diskDurumu = tablolar[1];
+	var ramDurumu = tablolar[2];
+	var islemciDurumu = tablolar[3];
+	var isletimSistemi = tablolar[4];
+	var programlar = tablolar[5];
+	var sonGuncellenme = tablolar[6];
+	var sistemeDahilOlmaTarihi = tablolar[7];
+
+
+
+
+}
+
+
+
+
+<section style="margin-top:50px" class="content">
+
+        <input id="diskDurumu" hidden value="@diskDurumu" />
+        <input id="ramDurumu" hidden value="@ramDurumu" />
+        <input id="islemciDurumu" hidden value="@islemciDurumu" />
+		<input id="tablolar"  hidden value="@degerlerxx" />
+
+
+        <div class="row clearfix">
+            <!-- Line Chart -->
+            @*<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>TAKİPÇİ DEĞİŞİMİ TWITTER/FACEBOOK/INSTAGRAM</h2>
+                        </div>
+                        <div class="body">
+                            <canvas id="line_chart" height="150"></canvas>
+                        </div>
+                    </div>
+                </div>*@
+            <!-- #END# Line Chart -->
+            <!-- Bar Chart -->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h3>Bilgisayar ID : @bilgisayarID / İşletim Sistemi : @isletimSistemi / Son Güncellenme : @sonGuncellenme / Kayıt Tarihi: @sistemeDahilOlmaTarihi </h3>
+                        <h2>Bilgisayardaki Programlar</h2>
+                        @programlar
+                    </div>
+                    <div class="body">
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Bar Chart -->
+        </div>
+
+
+
+
+        <div class="row clearfix">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="row clearfix">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <div class="card">
+                            <div class="header">
+                                <h2>DİSK DURUMU</h2>
+                            </div>
+                            <div class="body">
+                                <canvas id="pie_chart1" height="300"></canvas>
+								<BR /><BR />
+
+                            </div>
+                        </div>
+                    </div>
+
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+						<div class="card">
+							<div class="header">
+								<h2>DİSK DURUMU(DEĞİŞİM)</h2>
+							</div>
+							<div class="body">
+								<div id="real_time_chart" class="flot-chart" style="padding: 0px; position: relative;">
+								</div>
+
+						</div>
+					</div>
+				</div>
+
+
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+                        <div class="card">
+                            <div class="header">
+                                <h2>RAM DURUMU</h2>
+                            </div>
+                            <div class="body">
+                                <canvas id="pie_chart2" height="300"></canvas>
+								<BR /><BR />
+
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+						<div class="card">
+							<div class="header">
+								<h2>RAM DURUMU(DEĞİŞİM)</h2>
+							</div>
+							<div class="body">
+								<div id="real_time_chart2" class="flot-chart" style="padding: 0px; position: relative;">
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+                        <div class="card">
+                            <div class="header">
+                                <h2>İŞLEMCİ DURUMU</h2>
+                            </div>
+                            <div class="body">
+                                <canvas id="pie_chart3" height="300"></canvas>
+								<BR /><BR />
+
+                            </div>
+                        </div>
+                    </div>
+					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+						<div class="card">
+							<div class="header">
+								<h2>İŞLEMCİ DURUMU(DEĞİŞİM)</h2>
+							</div>
+							<div class="body">
+								<div id="real_time_chart3" class="flot-chart" style="padding: 0px; position: relative;">
+								</div>
+
+							</div>
+						</div>
+					</div>
+
+
+                    </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+</section>
+
+
+
+<script type="text/javascript">
+
+
+    var oku1 = document.getElementById("diskDurumu").value;
+    var oku2 = document.getElementById("ramDurumu").value;
+    var oku3 = document.getElementById("islemciDurumu").value;
+
+    //new Chart(document.getElementById("line_chart").getContext("2d"), getChartJs('line'));
+    //new Chart(document.getElementById("bar_chart").getContext("2d"), getChartJs('bar', oku));
+    new Chart(document.getElementById("pie_chart1").getContext("2d"), getChartJs('pie', oku1));
+    new Chart(document.getElementById("pie_chart2").getContext("2d"), getChartJs('pie2', oku2));
+    new Chart(document.getElementById("pie_chart3").getContext("2d"), getChartJs('pie3', oku3));
+
+    //new Chart(document.getElementById("radar_chart").getContext("2d"), getChartJs('radar'));
+
+</script>
+
+
+

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="sosyalmedyaModelStoreContainer" CdmEntityContainer="sosyalmedyaEntities">
+    <EntitySetMapping Name="durumGecmisi">
+      <EntityTypeMapping TypeName="sosyalmedyaModel.durumGecmisi">
+        <MappingFragment StoreEntitySet="durumGecmisi">
+          <ScalarProperty Name="guncellenmeTarihi" ColumnName="guncellenmeTarihi" />
+          <ScalarProperty Name="bilgisayarID" ColumnName="bilgisayarID" />
+          <ScalarProperty Name="anlikKullanilanDiskSize" ColumnName="anlikKullanilanDiskSize" />
+          <ScalarProperty Name="kullanilanTotalDiskSize" ColumnName="kullanilanTotalDiskSize" />
+          <ScalarProperty Name="anlikKullanilanRam" ColumnName="anlikKullanilanRam" />
+          <ScalarProperty Name="totalRam" ColumnName="totalRam" />
+          <ScalarProperty Name="islemciKullanimi" ColumnName="islemciKullanimi" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bilgisayarlar">
+      <EntityTypeMapping TypeName="sosyalmedyaModel.bilgisayarlar">
+        <MappingFragment StoreEntitySet="bilgisayarlar">
+          <ScalarProperty Name="kayitID" ColumnName="kayitID" />
+          <ScalarProperty Name="isletimSistemi" ColumnName="isletimSistemi" />
+          <ScalarProperty Name="eklenmeTarihi" ColumnName="eklenmeTarihi" />
+          <ScalarProperty Name="programlar" ColumnName="programlar" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
