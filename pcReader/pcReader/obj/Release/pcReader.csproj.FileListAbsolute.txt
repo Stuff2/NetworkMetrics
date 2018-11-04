@@ -1,0 +1,12 @@
+C:\Users\Spancer\source\repos\pcReader\pcReader\bin\Release\pcReader.exe.config
+C:\Users\Spancer\source\repos\pcReader\pcReader\bin\Release\pcReader.exe
+C:\Users\Spancer\source\repos\pcReader\pcReader\bin\Release\pcReader.pdb
+C:\Users\Spancer\source\repos\pcReader\pcReader\bin\Release\Newtonsoft.Json.dll
+C:\Users\Spancer\source\repos\pcReader\pcReader\bin\Release\Newtonsoft.Json.xml
+C:\Users\Spancer\source\repos\pcReader\pcReader\obj\Release\pcReader.Control.resources
+C:\Users\Spancer\source\repos\pcReader\pcReader\obj\Release\pcReader.Properties.Resources.resources
+C:\Users\Spancer\source\repos\pcReader\pcReader\obj\Release\pcReader.csproj.GenerateResource.Cache
+C:\Users\Spancer\source\repos\pcReader\pcReader\obj\Release\pcReader.csproj.CoreCompileInputs.cache
+C:\Users\Spancer\source\repos\pcReader\pcReader\obj\Release\pcReader.exe
+C:\Users\Spancer\source\repos\pcReader\pcReader\obj\Release\pcReader.pdb
+C:\Users\Spancer\source\repos\pcReader\pcReader\obj\Release\pcReader.csprojResolveAssemblyReference.cache
